@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import {DropDownList} from "./DropDownList";
+import {v1} from "uuid";
 
-function App() {
+export type NamesType = {
+    id: string
+    name: string
+}
+
+export function App() {
+
+    const [names, setNames] = useState<Array<NamesType>>([
+        {id: v1(), name: 'Julia'},
+        {id: v1(), name: 'Alexey'},
+        {id: v1(), name: 'Victor'},
+        {id: v1(), name: 'Dmitriy'},
+        {id: v1(), name: 'Vladimir'},
+    ])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <DropDownList list={names}/>
     </div>
   );
 }
 
-export default App;
